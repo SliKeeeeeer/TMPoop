@@ -10,6 +10,7 @@ class Language:
 
     def write_to(self, stream):
         stream.write(f'Year: {self.year}\n')
+        stream.write(f'Years passed: {self.years_passed()}\n')
 
     @staticmethod
     def create_from(stream, line):
@@ -25,6 +26,9 @@ class Language:
 
         language.read_from(stream)
         return language
+
+    def years_passed(self):
+        return 2022 - self.year
 
 
 class Procedure(Language):
