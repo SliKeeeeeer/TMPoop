@@ -1,4 +1,5 @@
 from enum import Enum
+import sys
 
 
 class Language:
@@ -7,17 +8,38 @@ class Language:
         self.references = None
 
     def read_from(self, stream):
-        self.year = int(stream.readline().rstrip('\n'))
-        self.references = int(stream.readline().rstrip('\n'))
+        try:
+            self.year = int(stream.readline().rstrip('\n'))
+        except Exception:
+            print('Reading year error')
+            stream.close()
+            sys.exit(1)
+
+        try:
+            self.references = int(stream.readline().rstrip('\n'))
+        except Exception:
+            print('Reading references error')
+            stream.close()
+            sys.exit(1)
 
     def write_to(self, stream):
-        stream.write(f'Year: {self.year}\n')
-        stream.write(f'Years passed: {self.years_passed()}\n')
-        stream.write(f'References: {self.references}\n')
+        try:
+            stream.write(f'Year: {self.year}\n')
+            stream.write(f'Years passed: {self.years_passed()}\n')
+            stream.write(f'References: {self.references}\n')
+        except Exception:
+            print('Writing to file error')
+            stream.close()
+            sys.exit(1)
 
     @staticmethod
     def create_from(stream, line):
-        k = int(line)
+        try:
+            k = int(line)
+        except Exception:
+            print('Conversion to int error')
+            stream.close()
+            sys.exit(1)
 
         if k == 1:
             language = Procedure()
@@ -49,7 +71,12 @@ class Procedure(Language):
 
     def read_from(self, stream):
         super().read_from(stream)
-        self.has_abstract_type = bool(stream.readline())
+        try:
+            self.has_abstract_type = bool(stream.readline())
+        except Exception:
+            print('Reading bool error')
+            stream.close()
+            sys.exit(1)
 
     def write_to(self, stream):
         stream.write('[Procedure language]\n')
@@ -67,7 +94,12 @@ class ObjectOriented(Language):
 
     def read_from(self, stream):
         super().read_from(stream)
-        self.inheritance_type = int(stream.readline())
+        try:
+            self.inheritance_type = int(stream.readline())
+        except Exception:
+            print('Reading int error')
+            stream.close()
+            sys.exit(1)
 
     def write_to(self, stream):
         stream.write('[OOP language]\n')
@@ -83,8 +115,19 @@ class Functional(Language):
 
     def read_from(self, stream):
         super().read_from(stream)
-        self.typification = int(stream.readline())
-        self.has_lazy_evaluation = bool(stream.readline())
+        try:
+            self.typification = int(stream.readline())
+        except Exception:
+            print('Reading int error')
+            stream.close()
+            sys.exit(1)
+
+        try:
+            self.has_lazy_evaluation = bool(stream.readline())
+        except Exception:
+            print('Reading bool error')
+            stream.close()
+            sys.exit(1)
 
     def write_to(self, stream):
         stream.write('[Functional language]\n')
