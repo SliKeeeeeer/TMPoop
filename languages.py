@@ -30,6 +30,9 @@ class Language:
     def years_passed(self):
         return 2022 - self.year
 
+    def compare(self, other):
+        return self.years_passed() < other.years_passed()
+
 
 class Procedure(Language):
     def __init__(self):

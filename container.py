@@ -41,6 +41,20 @@ class Container:
         self.start_node = None
         self.size = 0
 
+    def sort(self):
+        if self.start_node is None:
+            print('Empty list')
+        else:
+            n1 = self.start_node
+            n2 = self.start_node
+            while n1 is not None:
+                while n2 is not None:
+                    if n1.data.compare(n2.data):
+                        n1.data, n2.data = n2.data, n1.data
+                    n2 = n2.next
+                n1 = n1.next
+                n2 = self.start_node
+
     def __len__(self):
         return self.size
 
