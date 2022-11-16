@@ -13,7 +13,8 @@ def main():
     print('Filled container')
 
     output_file = open(sys.argv[2], "w")
-    cont.write_to(output_file)
+    # cont.write_to(output_file)
+    cont.write_to_procedure(output_file)
 
     cont.clear()
 

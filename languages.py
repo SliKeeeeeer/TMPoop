@@ -26,6 +26,9 @@ class Language:
         language.read_from(stream)
         return language
 
+    def write_to_procedure(self, stream):
+        pass
+
 
 class Procedure(Language):
     def __init__(self):
@@ -40,6 +43,9 @@ class Procedure(Language):
         stream.write('[Procedure language]\n')
         stream.write(f'Has abstract type: {self.has_abstract_type}\n')
         super().write_to(stream)
+
+    def write_to_procedure(self, stream):
+        self.write_to(stream)
 
 
 class ObjectOriented(Language):
