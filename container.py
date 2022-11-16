@@ -55,6 +55,22 @@ class Container:
                 n1 = n1.next
                 n2 = self.start_node
 
+    def __iter__(self):
+        return self.next
+
+    def check_languages(self):
+        languages_1 = []
+        n = self.start_node
+        while n is not None:
+            languages_1.append(n.data)
+            n = n.next
+
+        languages_2 = languages_1.copy()
+
+        for language_1 in languages_1:
+            for language_2 in languages_2:
+                Language.check_languages(language_1, language_2)
+
     def write_to_procedure(self, stream):
         print("Only procedure languages")
 

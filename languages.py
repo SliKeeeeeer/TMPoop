@@ -63,6 +63,43 @@ class Language:
     def write_to_procedure(self, stream):
         pass
 
+    @staticmethod
+    def check_languages(language_1, language_2):
+        match language_1, language_2:
+            case Procedure(), Procedure():
+                print("Languages are the same type: Procedure and Procedure")
+
+            case Procedure(), Functional():
+                print("Languages are different type: Procedure and Functional")
+
+            case Procedure(), ObjectOriented():
+                print("Languages are different type: Procedure and ObjectOriented")
+
+            case Functional(), Procedure():
+                print("Languages are different type: Functional and Procedure")
+
+            case Functional(), Functional():
+                print("Languages are the same type: Functional and Functional")
+
+            case Functional(), ObjectOriented():
+                print("Languages are different type: Functional and ObjectOriented")
+
+            case ObjectOriented(), Procedure():
+                print("Languages are different type: ObjectOriented and Procedure")
+
+            case ObjectOriented(), Functional():
+                print("Languages are different type: ObjectOriented and Functional")
+
+            case ObjectOriented(), ObjectOriented():
+                print("Languages are the same type: ObjectOriented and ObjectOriented")
+
+            case _:
+                print('Unknown type')
+                return
+
+        print(f"First: {language_1}, second: {language_2}")
+        print()
+
 
 class Procedure(Language):
     def __init__(self):

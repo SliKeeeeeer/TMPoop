@@ -32,6 +32,7 @@ def main():
     cont.sort()
     cont.write_to(output_file)
     # cont.write_to_procedure(output_file)
+    cont.check_languages()
 
     cont.clear()
 
