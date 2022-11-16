@@ -4,13 +4,16 @@ from enum import Enum
 class Language:
     def __init__(self):
         self.year = None
+        self.references = None
 
     def read_from(self, stream):
         self.year = int(stream.readline().rstrip('\n'))
+        self.references = int(stream.readline().rstrip('\n'))
 
     def write_to(self, stream):
         stream.write(f'Year: {self.year}\n')
         stream.write(f'Years passed: {self.years_passed()}\n')
+        stream.write(f'References: {self.references}\n')
 
     @staticmethod
     def create_from(stream, line):
