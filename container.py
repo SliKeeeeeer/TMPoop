@@ -55,6 +55,14 @@ class Container:
                 n1 = n1.next
                 n2 = self.start_node
 
+    def write_to_procedure(self, stream):
+        print("Only procedure languages")
+
+        n = self.start_node
+        while n is not None:
+            n.data.write_to_procedure(stream)
+            n = n.next
+
     def __len__(self):
         return self.size
 

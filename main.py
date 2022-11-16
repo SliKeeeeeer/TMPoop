@@ -15,6 +15,7 @@ def main():
     output_file = open(sys.argv[2], "w")
     cont.sort()
     cont.write_to(output_file)
+    # cont.write_to_procedure(output_file)
 
     cont.clear()
 
